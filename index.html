@@ -1,195 +1,293 @@
 <!DOCTYPE html>
 <html lang="lo">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kedsadaphone Portfolio</title>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #fff7fa;
-    color: #49343e;
-    line-height: 1.8;
-}
-
-header {
-    background: #f4c6d7;
-    padding: 20px;
-    text-align: center;
-}
-
-header h1 {
-    color: #a94f75;
-}
-
-nav {
-    background: #fff0f5;
-    padding: 15px;
-    text-align: center;
-}
-
-nav a {
-    text-decoration: none;
-    color: #a94f75;
-    margin: 12px;
-    font-weight: bold;
-}
-
-.hero {
-    text-align: center;
-    padding: 65px 20px;
-}
-
-.hero h2 {
-    font-size: 35px;
-    color: #d4779b;
-}
-
-.hero p {
-    margin-top: 10px;
-}
-
-section {
-    max-width: 850px;
-    margin: 25px auto;
-    padding: 30px;
-    background: white;
-    border-radius: 18px;
-    box-shadow: 0 4px 15px #eacbd8;
-}
-
-h2 {
-    color: #d4779b;
-    margin-bottom: 15px;
-}
-
-.info p {
-    padding: 7px;
-    border-bottom: 1px solid #f8dce7;
-}
-
-.card {
-    background: #fff0f5;
-    padding: 20px;
-    border-radius: 12px;
-    margin-top: 12px;
-}
-
-.contact a {
-    color: #bd6688;
-    text-decoration: none;
-}
-
-footer {
-    background: #f4c6d7;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    color: #82465e;
-}
-
-@media(max-width:600px) {
-    nav a {
-        display: inline-block;
-        margin: 5px;
-    }
-
-    .hero h2 {
-        font-size: 27px;
-    }
-
-    section {
-        margin: 15px;
-        padding: 20px;
-    }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ຊື່ ນາມສະກຸນ — Portfolio</title>
+  <meta name="description" content="Portfolio ສ່ວນຕົວ" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<header>
-    <h1>MY PORTFOLIO</h1>
-    <p>Welcome to my personal website ♡</p>
-</header>
-
-<nav>
-    <a href="#home">Home</a>
-    <a href="#about">About Me</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<div class="hero" id="home">
-    <h2>Kedsadaphone Xayaphone</h2>
-    <p>ສະບາຍດີ! ຍິນດີຕ້ອນຮັບສູ່ Portfolio ຂອງຂ້ອຍ</p>
-    <p>Creative Web Design Student ♡</p>
-</div>
-
-<section id="about">
-    <h2>ປະຫວັດສ່ວນຕົວ</h2>
-    <div class="info">
-        <p><b>ຊື່:</b> Kedsadaphone Xayaphone</p>
-        <p><b>ວັນເກີດ:</b> 24/07/2004</p>
-        <p><b>ທີ່ຢູ່:</b> ບ້ານວຽງວິໄລ ເມືອງທ່າແຂກ ແຂວງຄຳມ່ວນ</p>
-        <p><b>ສິ່ງທີ່ມັກ:</b> Guitar 🎸</p>
+  <header class="nav">
+    <a href="#home" class="logo">ຊື່ ນາມສະກຸນ</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">ກ່ຽວກັບ</a>
+      <a href="#skills">ຄວາມສາມາດ</a>
+      <a href="#interests">ສິ່ງທີ່ມັກ</a>
+      <a href="#contact">ຕິດຕໍ່</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="themeToggle" class="icon-btn" aria-label="ສະຫຼັບໂໝດມືດ/ສະຫວ່າງ">☾</button>
+      <button id="menuToggle" class="icon-btn menu-btn" aria-label="ເມນູ">☰</button>
     </div>
-</section>
+  </header>
 
-<section id="education">
-    <h2>ປະຫວັດການສຶກສາ</h2>
-    <div class="card">
-        <h3>ສະຖານສຶກສາ</h3>
-        <p>ວິທະຍາໄລເຕັກນິກວິຊາຊີບແຂວງຄຳມ່ວນ</p>
-    </div>
-    <div class="card">
-        <h3>ສາຂາຮຽນ</h3>
-        <p>ອອກແບບ ແລະ ພັດທະນາເວັບໄຊ້</p>
-    </div>
-</section>
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <img class="avatar reveal" src="assets/profile.jpg" alt="ຮູບ profile"
+           onerror="this.onerror=null;this.src='assets/profile-placeholder.svg'" />
+      <div class="hero-text reveal">
+        <p class="eyebrow">Portfolio</p>
+        <h1>ຊື່ ນາມສະກຸນ</h1>
+        <p class="role">ນັກຮຽນສາຂາ ສາຂາຮຽນຂອງເຈົ້າ</p>
+        <blockquote class="quote">“ໃສ່ຄຳຄົມປະຈຳຕົວຂອງເຈົ້າຢູ່ບ່ອນນີ້”</blockquote>
+        <a href="#contact" class="btn">ຕິດຕໍ່ຂ້ອຍ →</a>
+      </div>
+    </section>
 
-<section id="skills">
-    <h2>ຄວາມສາມາດພິເສດ</h2>
-    <div class="card">
-        <p>ຍັງບໍ່ໄດ້ລະບຸຄວາມສາມາດພິເສດ</p>
-    </div>
-    <div class="card">
-        <h3>ຄວາມສົນໃຈ</h3>
-        <p>ມັກຫຼິ້ນ Guitar 🎸</p>
-    </div>
-</section>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h2 class="section-title reveal"><span>01</span> ກ່ຽວກັບຂ້ອຍ</h2>
+      <dl class="rows reveal">
+        <div><dt>ຊື່ ແລະ ນາມສະກຸນ</dt><dd>ຊື່ ນາມສະກຸນ</dd></div>
+        <div><dt>ວັນເດືອນປີເກີດ</dt><dd>DD / MM / YYYY</dd></div>
+        <div><dt>ທີ່ຢູ່</dt><dd>ບ້ານ..., ເມືອງ..., ແຂວງ...</dd></div>
+        <div><dt>ບ່ອນຮຽນ</dt><dd>ຊື່ໂຮງຮຽນ / ມະຫາວິທະຍາໄລ</dd></div>
+        <div><dt>ສາຂາຮຽນ</dt><dd>ສາຂາຮຽນຂອງເຈົ້າ</dd></div>
+      </dl>
+    </section>
 
-<section>
-    <h2>ຄຳຄົມປະຈຳຕົວ</h2>
-    <div class="card">
-        <p>
-        "ທຸກໆຄວາມພະຍາຍາມໃນມື້ນີ້
-        ຄືກ້າວສຳຄັນສູ່ຄວາມສຳເລັດໃນມື້ຂ້າງໜ້າ."
-        </p>
-    </div>
-</section>
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2 class="section-title reveal"><span>02</span> ຄວາມສາມາດພິເສດ</h2>
+      <ul class="tags reveal">
+        <li>ຄວາມສາມາດທີ 1</li>
+        <li>ຄວາມສາມາດທີ 2</li>
+        <li>ຄວາມສາມາດທີ 3</li>
+        <li>ຄວາມສາມາດທີ 4</li>
+      </ul>
+    </section>
 
-<section id="contact" class="contact">
-    <h2>ຕິດຕໍ່ຂ້ອຍ</h2>
-    <p>ເບີໂທ: <a href="tel:02091212242">02091212242</a></p>
-    <p>Email:
-        <a href="mailto:secondminute509@gmail.com">
-        secondminute509@gmail.com
-        </a>
-    </p>
-</section>
+    <!-- INTERESTS -->
+    <section id="interests" class="section">
+      <h2 class="section-title reveal"><span>03</span> ສິ່ງທີ່ມັກ</h2>
+      <div class="cols reveal">
+        <div><h3>ສິ່ງທີ່ມັກ 1</h3><p>ອະທິບາຍສັ້ນໆ</p></div>
+        <div><h3>ສິ່ງທີ່ມັກ 2</h3><p>ອະທິບາຍສັ້ນໆ</p></div>
+        <div><h3>ສິ່ງທີ່ມັກ 3</h3><p>ອະທິບາຍສັ້ນໆ</p></div>
+      </div>
+    </section>
 
-<footer>
-    <p>© 2026 Kedsadaphone Xayaphone</p>
-    <p>Made with Love ♡</p>
-</footer>
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <h2 class="section-title reveal"><span>04</span> ຕິດຕໍ່ຂ້ອຍ</h2>
+      <div class="contact reveal">
+        <a href="mailto:youremail@example.com">youremail@example.com</a>
+        <a href="tel:+8562000000000">020 0000 0000</a>
+      </div>
+    </section>
+  </main>
 
+  <footer class="footer">
+    <p>© <span id="year"></span> ຊື່ ນາມສະກຸນ</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
+</html>
+
+style.css
+
+css
+:root {
+  --bg: #fafaf8;
+  --text: #141414;
+  --muted: #7a7a76;
+  --line: #e4e4df;
+  --accent: #141414;
+  --serif: "Cormorant Garamond", "Noto Sans Lao", serif;
+  --sans: "Noto Sans Lao", system-ui, sans-serif;
+}
+[data-theme="dark"] {
+  --bg: #0f0f0f;
+  --text: #ececea;
+  --muted: #8c8c88;
+  --line: #262626;
+  --accent: #ececea;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  font-family: var(--sans);
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  transition: background .3s, color .3s;
+}
+a { color: inherit; text-decoration: none; }
+
+/* NAV */
+.nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px clamp(20px, 6vw, 80px);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.logo { font-weight: 500; letter-spacing: .02em; }
+.nav-links { display: flex; gap: 32px; font-size: .95rem; }
+.nav-links a { color: var(--muted); transition: color .2s; }
+.nav-links a:hover { color: var(--text); }
+.icon-btn {
+  background: none; border: 1px solid var(--line); color: var(--text);
+  width: 38px; height: 38px; border-radius: 50%; cursor: pointer; font-size: 16px;
+  transition: border-color .2s;
+}
+.icon-btn:hover { border-color: var(--text); }
+.nav-actions { display: flex; gap: 8px; }
+.menu-btn { display: none; }
+
+/* LAYOUT */
+.hero, .section { max-width: 920px; margin: 0 auto; padding-inline: clamp(20px, 6vw, 40px); }
+
+/* HERO */
+.hero {
+  min-height: 100vh; padding-top: 120px; padding-bottom: 60px;
+  display: flex; align-items: center; gap: clamp(32px, 6vw, 72px);
+}
+.avatar {
+  width: clamp(150px, 22vw, 220px); aspect-ratio: 1; object-fit: cover; border-radius: 50%;
+  border: 1px solid var(--line); flex: none; filter: grayscale(.15);
+}
+.eyebrow { text-transform: uppercase; letter-spacing: .25em; font-size: .75rem; color: var(--muted); }
+.hero h1 {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.2; margin: 8px 0 6px;
+}
+.role { color: var(--muted); }
+.quote {
+  font-family: var(--serif); font-style: italic; font-size: 1.35rem; line-height: 1.5;
+  margin: 28px 0; padding-left: 18px; border-left: 1px solid var(--text); max-width: 460px;
+}
+.btn {
+  display: inline-block; padding: 10px 26px; border: 1px solid var(--text); border-radius: 999px;
+  font-weight: 400; font-size: .95rem; transition: background .2s, color .2s;
+}
+.btn:hover { background: var(--text); color: var(--bg); }
+
+/* SECTIONS */
+.section { padding-block: 90px; border-top: 1px solid var(--line); }
+.section-title {
+  font-family: var(--serif); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin-bottom: 40px; display: flex; align-items: baseline; gap: 16px;
+}
+.section-title span { font-family: var(--sans); font-size: .8rem; color: var(--muted); letter-spacing: .1em; }
+
+.rows > div {
+  display: grid; grid-template-columns: 220px 1fr; gap: 16px;
+  padding: 18px 0; border-bottom: 1px solid var(--line);
+}
+.rows dt { color: var(--muted); }
+.rows dd { font-weight: 400; }
+
+.tags { list-style: none; display: flex; flex-wrap: wrap; gap: 12px; }
+.tags li {
+  padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px;
+  transition: border-color .2s;
+}
+.tags li:hover { border-color: var(--text); }
+
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; }
+.cols h3 { font-weight: 500; font-size: 1.05rem; margin-bottom: 4px; }
+.cols p { color: var(--muted); }
+
+.contact { display: flex; flex-direction: column; gap: 8px; }
+.contact a {
+  font-family: var(--serif); font-size: clamp(1.6rem, 4.5vw, 2.6rem);
+  width: fit-content; border-bottom: 1px solid transparent; transition: border-color .2s;
+}
+.contact a:hover { border-color: var(--text); }
+
+.footer {
+  max-width: 920px; margin: 0 auto; padding: 28px clamp(20px, 6vw, 40px);
+  border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem;
+}
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.show { opacity: 1; transform: none; }
+
+/* RESPONSIVE */
+@media (max-width: 720px) {
+  .hero { flex-direction: column; text-align: left; align-items: flex-start; justify-content: center; }
+  .rows > div { grid-template-columns: 1fr; gap: 0; }
+  .menu-btn { display: block; }
+  .nav-links {
+    position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+    max-height: 0; overflow: hidden; transition: max-height .3s;
+  }
+  .nav-links.open { max-height: 300px; }
+  .nav-links a { padding: 14px clamp(20px, 6vw, 80px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+script.js
+
+js
+// ປີໃນ footer
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// ໂໝດມືດ / ສະຫວ່າງ
+const root = document.documentElement;
+const themeBtn = document.getElementById("themeToggle");
+function applyTheme(t) {
+  root.setAttribute("data-theme", t);
+  themeBtn.textContent = t === "dark" ? "☾" : "☀";
+}
+let saved = null;
+try { saved = localStorage.getItem("theme"); } catch (e) {}
+applyTheme(saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+themeBtn.addEventListener("click", () => {
+  const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try { localStorage.setItem("theme", next); } catch (e) {}
+});
+
+// ເມນູມືຖື
+const menuBtn = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+menuBtn.addEventListener("click", () => navLinks.classList.toggle("open"));
+navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => navLinks.classList.remove("open")));
+
+// Animation ຕອນເລື່ອນຫນ້າ
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("show"); io.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+assets/profile-placeholder.svg
+
+svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c5cff"/>
+      <stop offset="1" stop-color="#00d4ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#g)"/>
+  <circle cx="200" cy="155" r="70" fill="rgba(255,255,255,0.9)"/>
+  <path d="M60 400c0-87 63-150 140-150s140 63 140 150z" fill="rgba(255,255,255,0.9)"/>
+</svg>
+
+Your folder should look like this:
+
+portfolio/
+├── index.html
+├── style.css
+├── script.js
+└── assets/
+    ├── profile.jpg                (your photo)
+    └── profile-placeholder.svg
