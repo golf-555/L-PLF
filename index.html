@@ -8,7 +8,145 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --text: #141414;
+      --muted: #7a7a76;
+      --line: #e4e4df;
+      --serif: "Cormorant Garamond", "Noto Sans Lao", serif;
+      --sans: "Noto Sans Lao", system-ui, sans-serif;
+    }
+    [data-theme="dark"] {
+      --bg: #0f0f0f;
+      --text: #ececea;
+      --muted: #8c8c88;
+      --line: #262626;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      font-family: var(--sans);
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      transition: background .3s, color .3s;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    .nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px clamp(20px, 6vw, 80px);
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .logo { font-weight: 500; letter-spacing: .02em; }
+    .nav-links { display: flex; gap: 32px; font-size: .95rem; }
+    .nav-links a { color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .icon-btn {
+      background: none; border: 1px solid var(--line); color: var(--text);
+      width: 38px; height: 38px; border-radius: 50%; cursor: pointer; font-size: 16px;
+      transition: border-color .2s;
+    }
+    .icon-btn:hover { border-color: var(--text); }
+    .nav-actions { display: flex; gap: 8px; }
+    .menu-btn { display: none; }
+
+    /* LAYOUT */
+    .hero, .section { max-width: 920px; margin: 0 auto; padding-inline: clamp(20px, 6vw, 40px); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; padding-top: 120px; padding-bottom: 60px;
+      display: flex; align-items: center; gap: clamp(32px, 6vw, 72px);
+    }
+    .avatar {
+      width: clamp(150px, 22vw, 220px); aspect-ratio: 1; object-fit: cover; border-radius: 50%;
+      border: 1px solid var(--line); flex: none; filter: grayscale(.15);
+    }
+    .eyebrow { text-transform: uppercase; letter-spacing: .25em; font-size: .75rem; color: var(--muted); }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 500;
+      font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.2; margin: 8px 0 6px;
+    }
+    .role { color: var(--muted); }
+    .quote {
+      font-family: var(--serif); font-style: italic; font-size: 1.35rem; line-height: 1.5;
+      margin: 28px 0; padding-left: 18px; border-left: 1px solid var(--text); max-width: 460px;
+    }
+    .btn {
+      display: inline-block; padding: 10px 26px; border: 1px solid var(--text); border-radius: 999px;
+      font-weight: 400; font-size: .95rem; transition: background .2s, color .2s;
+    }
+    .btn:hover { background: var(--text); color: var(--bg); }
+
+    /* SECTIONS */
+    .section { padding-block: 90px; border-top: 1px solid var(--line); }
+    .section-title {
+      font-family: var(--serif); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin-bottom: 40px; display: flex; align-items: baseline; gap: 16px;
+    }
+    .section-title span { font-family: var(--sans); font-size: .8rem; color: var(--muted); letter-spacing: .1em; }
+
+    .rows > div {
+      display: grid; grid-template-columns: 220px 1fr; gap: 16px;
+      padding: 18px 0; border-bottom: 1px solid var(--line);
+    }
+    .rows dt { color: var(--muted); }
+    .rows dd { font-weight: 400; }
+
+    .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 12px; }
+    .tags li {
+      padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px;
+      transition: border-color .2s;
+    }
+    .tags li:hover { border-color: var(--text); }
+
+    .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; }
+    .cols h3 { font-weight: 500; font-size: 1.05rem; margin-bottom: 4px; }
+    .cols p { color: var(--muted); }
+
+    .contact { display: flex; flex-direction: column; gap: 8px; }
+    .contact a {
+      font-family: var(--serif); font-size: clamp(1.6rem, 4.5vw, 2.6rem);
+      width: fit-content; border-bottom: 1px solid transparent; transition: border-color .2s;
+    }
+    .contact a:hover { border-color: var(--text); }
+
+    .footer {
+      max-width: 920px; margin: 0 auto; padding: 28px clamp(20px, 6vw, 40px);
+      border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem;
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 720px) {
+      .hero { flex-direction: column; text-align: left; align-items: flex-start; justify-content: center; }
+      .rows > div { grid-template-columns: 1fr; gap: 0; }
+      .menu-btn { display: block; }
+      .nav-links {
+        position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0;
+        background: var(--bg); border-bottom: 1px solid var(--line);
+        max-height: 0; overflow: hidden; transition: max-height .3s;
+      }
+      .nav-links.open { max-height: 300px; }
+      .nav-links a { padding: 14px clamp(20px, 6vw, 80px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
 
@@ -29,8 +167,9 @@
   <main>
     <!-- HERO -->
     <section id="home" class="hero">
-      <img class="avatar reveal" src="assets/profile.jpg" alt="ຮູບ profile"
-           onerror="this.onerror=null;this.src='assets/profile-placeholder.svg'" />
+      <!-- ໃສ່ຮູບຂອງເຈົ້າຊື່ profile.jpg ໄວ້ຂ້າງໄຟລ໌ນີ້ -->
+      <img class="avatar reveal" src="profile.jpg" alt="ຮູບ profile"
+           onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect width=%22400%22 height=%22400%22 fill=%22%23e4e4df%22/%3E%3Ccircle cx=%22200%22 cy=%22155%22 r=%2270%22 fill=%22%23fafaf8%22/%3E%3Cpath d=%22M60 400c0-87 63-150 140-150s140 63 140 150z%22 fill=%22%23fafaf8%22/%3E%3C/svg%3E'" />
       <div class="hero-text reveal">
         <p class="eyebrow">Portfolio</p>
         <h1>ຊື່ ນາມສະກຸນ</h1>
@@ -87,207 +226,37 @@
     <p>© <span id="year"></span> ຊື່ ນາມສະກຸນ</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // ປີໃນ footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ໂໝດມືດ / ສະຫວ່າງ
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeToggle");
+    function applyTheme(t) {
+      root.setAttribute("data-theme", t);
+      themeBtn.textContent = t === "dark" ? "☾" : "☀";
+    }
+    let saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    applyTheme(saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+    themeBtn.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+
+    // ເມນູມືຖື
+    const menuBtn = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    menuBtn.addEventListener("click", () => navLinks.classList.toggle("open"));
+    navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => navLinks.classList.remove("open")));
+
+    // Animation ຕອນເລື່ອນຫນ້າ
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("show"); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  </script>
 </body>
 </html>
-
-style.css
-
-css
-:root {
-  --bg: #fafaf8;
-  --text: #141414;
-  --muted: #7a7a76;
-  --line: #e4e4df;
-  --accent: #141414;
-  --serif: "Cormorant Garamond", "Noto Sans Lao", serif;
-  --sans: "Noto Sans Lao", system-ui, sans-serif;
-}
-[data-theme="dark"] {
-  --bg: #0f0f0f;
-  --text: #ececea;
-  --muted: #8c8c88;
-  --line: #262626;
-  --accent: #ececea;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-body {
-  font-family: var(--sans);
-  font-weight: 300;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.8;
-  transition: background .3s, color .3s;
-}
-a { color: inherit; text-decoration: none; }
-
-/* NAV */
-.nav {
-  position: fixed; inset: 0 0 auto 0; z-index: 50;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 18px clamp(20px, 6vw, 80px);
-  background: color-mix(in srgb, var(--bg) 85%, transparent);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
-}
-.logo { font-weight: 500; letter-spacing: .02em; }
-.nav-links { display: flex; gap: 32px; font-size: .95rem; }
-.nav-links a { color: var(--muted); transition: color .2s; }
-.nav-links a:hover { color: var(--text); }
-.icon-btn {
-  background: none; border: 1px solid var(--line); color: var(--text);
-  width: 38px; height: 38px; border-radius: 50%; cursor: pointer; font-size: 16px;
-  transition: border-color .2s;
-}
-.icon-btn:hover { border-color: var(--text); }
-.nav-actions { display: flex; gap: 8px; }
-.menu-btn { display: none; }
-
-/* LAYOUT */
-.hero, .section { max-width: 920px; margin: 0 auto; padding-inline: clamp(20px, 6vw, 40px); }
-
-/* HERO */
-.hero {
-  min-height: 100vh; padding-top: 120px; padding-bottom: 60px;
-  display: flex; align-items: center; gap: clamp(32px, 6vw, 72px);
-}
-.avatar {
-  width: clamp(150px, 22vw, 220px); aspect-ratio: 1; object-fit: cover; border-radius: 50%;
-  border: 1px solid var(--line); flex: none; filter: grayscale(.15);
-}
-.eyebrow { text-transform: uppercase; letter-spacing: .25em; font-size: .75rem; color: var(--muted); }
-.hero h1 {
-  font-family: var(--serif); font-weight: 500;
-  font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.2; margin: 8px 0 6px;
-}
-.role { color: var(--muted); }
-.quote {
-  font-family: var(--serif); font-style: italic; font-size: 1.35rem; line-height: 1.5;
-  margin: 28px 0; padding-left: 18px; border-left: 1px solid var(--text); max-width: 460px;
-}
-.btn {
-  display: inline-block; padding: 10px 26px; border: 1px solid var(--text); border-radius: 999px;
-  font-weight: 400; font-size: .95rem; transition: background .2s, color .2s;
-}
-.btn:hover { background: var(--text); color: var(--bg); }
-
-/* SECTIONS */
-.section { padding-block: 90px; border-top: 1px solid var(--line); }
-.section-title {
-  font-family: var(--serif); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.4rem);
-  margin-bottom: 40px; display: flex; align-items: baseline; gap: 16px;
-}
-.section-title span { font-family: var(--sans); font-size: .8rem; color: var(--muted); letter-spacing: .1em; }
-
-.rows > div {
-  display: grid; grid-template-columns: 220px 1fr; gap: 16px;
-  padding: 18px 0; border-bottom: 1px solid var(--line);
-}
-.rows dt { color: var(--muted); }
-.rows dd { font-weight: 400; }
-
-.tags { list-style: none; display: flex; flex-wrap: wrap; gap: 12px; }
-.tags li {
-  padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px;
-  transition: border-color .2s;
-}
-.tags li:hover { border-color: var(--text); }
-
-.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; }
-.cols h3 { font-weight: 500; font-size: 1.05rem; margin-bottom: 4px; }
-.cols p { color: var(--muted); }
-
-.contact { display: flex; flex-direction: column; gap: 8px; }
-.contact a {
-  font-family: var(--serif); font-size: clamp(1.6rem, 4.5vw, 2.6rem);
-  width: fit-content; border-bottom: 1px solid transparent; transition: border-color .2s;
-}
-.contact a:hover { border-color: var(--text); }
-
-.footer {
-  max-width: 920px; margin: 0 auto; padding: 28px clamp(20px, 6vw, 40px);
-  border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem;
-}
-
-/* REVEAL */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease; }
-.reveal.show { opacity: 1; transform: none; }
-
-/* RESPONSIVE */
-@media (max-width: 720px) {
-  .hero { flex-direction: column; text-align: left; align-items: flex-start; justify-content: center; }
-  .rows > div { grid-template-columns: 1fr; gap: 0; }
-  .menu-btn { display: block; }
-  .nav-links {
-    position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0;
-    background: var(--bg); border-bottom: 1px solid var(--line);
-    max-height: 0; overflow: hidden; transition: max-height .3s;
-  }
-  .nav-links.open { max-height: 300px; }
-  .nav-links a { padding: 14px clamp(20px, 6vw, 80px); }
-}
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
-  .reveal { opacity: 1; transform: none; }
-}
-
-script.js
-
-js
-// ປີໃນ footer
-document.getElementById("year").textContent = new Date().getFullYear();
-
-// ໂໝດມືດ / ສະຫວ່າງ
-const root = document.documentElement;
-const themeBtn = document.getElementById("themeToggle");
-function applyTheme(t) {
-  root.setAttribute("data-theme", t);
-  themeBtn.textContent = t === "dark" ? "☾" : "☀";
-}
-let saved = null;
-try { saved = localStorage.getItem("theme"); } catch (e) {}
-applyTheme(saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
-themeBtn.addEventListener("click", () => {
-  const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-  applyTheme(next);
-  try { localStorage.setItem("theme", next); } catch (e) {}
-});
-
-// ເມນູມືຖື
-const menuBtn = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-menuBtn.addEventListener("click", () => navLinks.classList.toggle("open"));
-navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => navLinks.classList.remove("open")));
-
-// Animation ຕອນເລື່ອນຫນ້າ
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("show"); io.unobserve(e.target); } });
-}, { threshold: 0.15 });
-document.querySelectorAll(".reveal").forEach(el => io.observe(el));
-
-assets/profile-placeholder.svg
-
-svg
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#7c5cff"/>
-      <stop offset="1" stop-color="#00d4ff"/>
-    </linearGradient>
-  </defs>
-  <rect width="400" height="400" fill="url(#g)"/>
-  <circle cx="200" cy="155" r="70" fill="rgba(255,255,255,0.9)"/>
-  <path d="M60 400c0-87 63-150 140-150s140 63 140 150z" fill="rgba(255,255,255,0.9)"/>
-</svg>
-
-Your folder should look like this:
-
-portfolio/
-├── index.html
-├── style.css
-├── script.js
-└── assets/
-    ├── profile.jpg                (your photo)
-    └── profile-placeholder.svg
